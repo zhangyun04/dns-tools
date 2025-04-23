@@ -1,11 +1,11 @@
-# MacOS系统文件
+# MacOS system files
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# 临时文件
+# Temporary files
 *.swp
 *~
 
-# 本地设置文件
+# Local settings file
 .current_dns_settings 

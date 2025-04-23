@@ -1,66 +1,66 @@
-# DNS 管理工具
+# DNS Management Tools
 
-这个仓库包含用于管理 macOS DNS 设置的实用工具，特别用于解决 Cisco VPN 客户端导致的 DNS 问题。
+This repository contains utilities for managing macOS DNS settings, specifically for resolving DNS issues caused by Cisco VPN clients.
 
-## 问题背景
+## Background
 
-Cisco AnyConnect VPN 客户端在断开连接后经常不能正确恢复原始 DNS 设置，导致网络连接问题。这些脚本提供了一种简单的方法来管理和恢复 DNS 设置。
+Cisco AnyConnect VPN clients often fail to correctly restore the original DNS settings after disconnecting, causing network connectivity issues. These scripts provide a simple way to manage and restore DNS settings.
 
-## 工具说明
+## Tools Description
 
-### 1. 基础脚本 (`reset_dns.sh`)
+### 1. Basic Script (`reset_dns.sh`)
 
-简单的脚本，直接将 DNS 设置为 Google 公共 DNS 服务器 (8.8.8.8 和 8.8.4.4)。
+A simple script that directly sets DNS to Google's public DNS servers (8.8.8.8 and 8.8.4.4).
 
 ```bash
 sudo ./reset_dns.sh
 ```
 
-### 2. 高级脚本 (`manage_dns.sh`)
+### 2. Advanced Script (`manage_dns.sh`)
 
-功能更强大的脚本，具有多种功能：
+A more powerful script with multiple functions:
 
-#### 命令:
+#### Commands:
 
-- `current` - 显示当前 DNS 设置
-- `save` - 保存当前 DNS 设置
-- `reset` - 重置为 Google 公共 DNS
-- `restore` - 恢复之前保存的 DNS 设置
-- `help` - 显示帮助信息
+- `current` - Display current DNS settings
+- `save` - Save current DNS settings
+- `reset` - Reset to Google's public DNS
+- `restore` - Restore previously saved DNS settings
+- `help` - Display help information
 
-#### 使用示例:
+#### Usage Examples:
 
-查看当前 DNS：
+View current DNS:
 ```bash
 ./manage_dns.sh current
 ```
 
-连接 VPN 前保存 DNS 设置：
+Save DNS settings before connecting to VPN:
 ```bash
 ./manage_dns.sh save
 ```
 
-VPN 断开后修复网络：
+Fix network after VPN disconnection:
 ```bash
 sudo ./manage_dns.sh reset
 ```
 
-恢复原始 DNS 设置：
+Restore original DNS settings:
 ```bash
 sudo ./manage_dns.sh restore
 ```
 
-## 安装
+## Installation
 
-克隆此仓库：
+Clone this repository:
 ```bash
-git clone https://github.com/你的用户名/dns-tools.git
+git clone https://github.com/yourusername/dns-tools.git
 cd dns-tools
 chmod +x reset_dns.sh manage_dns.sh
 ```
 
-## 注意事项
+## Notes
 
-- `reset` 和 `restore` 操作需要管理员权限（sudo）
-- 这些脚本针对 Wi-Fi 接口设计，如果使用其他网络接口，请修改脚本中相应的接口名称
-- DNS 设置会保存在用户主目录下的 `.current_dns_settings` 文件中 
+- `reset` and `restore` operations require administrator privileges (sudo)
+- These scripts are designed for Wi-Fi interface, modify the interface name in the scripts if you use a different network interface
+- DNS settings are saved in the `.current_dns_settings` file in your home directory 
